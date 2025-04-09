@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -14,7 +16,7 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer Awjb2QSpjbzc6z6TlcOsFfMockvfYHboCGYWKbMTUPNqCfTVs2PxqaBRdUwQfwWz",
+        Authorization: `Bearer ${process.env.BEEHIV_API_KEY}`,
       },
       body: JSON.stringify({ email }),
     });
